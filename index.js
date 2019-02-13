@@ -5,7 +5,7 @@ let someValue = 0;
 
 setInterval(() => {
     someValue++;
-}, 5000);
+}, 1000);
 
 module.exports = (req, res) => {
     const { query } = parse(req.url, true);
