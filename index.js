@@ -1,15 +1,12 @@
+const fs = require('fs');
 const { parse } = require('url');
 
-//testing interval
-let someValue = 0;
-
-setInterval(() => {
-    someValue++;
-}, 1000);
+fs.writeFileSync('date.txt', Date.now(), 'utf8');
 
 module.exports = (req, res) => {
     const { query } = parse(req.url, true);
     const { name = 'World' } = query;
+    const date = fs.readFileSync('date.txt', 'utf8');
 
-    res.end(`Hello, ${name}! ${someValue}`);
+    res.end(`Hello, ${name}! ${date}`);
 };
